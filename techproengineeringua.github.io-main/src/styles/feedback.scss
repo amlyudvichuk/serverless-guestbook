@@ -1,0 +1,149 @@
+@use 'variables' as v;
+
+.section_feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .feedback-form {
+    width: 60%;
+
+    @media screen and (max-width: 640px) {
+      width: 95%;
+    }
+  }
+}
+
+.feedback-form {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+
+  &_subtitle {
+    color: white;
+    margin: 10px 0;
+    text-align: center;
+  
+    &_link {
+      color: v.$green;
+      padding: 0 10px;
+    }
+  }
+
+  &_input {
+    background: black;
+    padding: 15px;
+    color: white;
+    letter-spacing: 2px;
+
+    &::placeholder {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0;
+      opacity: 0.7;
+    }
+  }
+
+  .file-input-wrapper {
+    position: relative;
+
+    input[type=file]::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    &_btn {
+      position: absolute;
+      top: 5px;
+      left: 3px;
+      display: inline-block;
+      color: v.$green;
+      text-transform: uppercase;
+      padding: 15px;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: monospace;
+      font-weight: 600;
+      letter-spacing: 0;
+      transition: 300ms;
+    }
+  }
+
+  input[type=file]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  input[type=file] div {
+    content: 'Select some files';
+    display: inline-block;
+    color: v.$green;
+    text-transform: uppercase;
+    padding: 15px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: 600;
+    letter-spacing: 0;
+    transition: 300ms;
+  }
+
+  input[type=file]:hover {
+    cursor: pointer;
+  }
+
+  input[type=file]:hover::before {
+    color: v.$green;
+  }
+
+  &_input[type=textarea] {
+    height: 150px;
+    resize: vertical;
+  }
+
+  .validated {
+    border-color: v.$green;
+  }
+
+  .button-primary {
+    align-self: center;
+  }
+
+  .checkbox {
+    &_options {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+
+      &_option {
+        margin: 10px 30px;
+      }
+
+      &_input {
+        opacity: 0;
+        height: 0;
+
+        &:checked + .checkbox_options_label {
+          color: v.$green;
+        }
+      }
+    }
+
+    label {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: rgba(148, 148, 148, 0.484);
+    }
+  }
+}
+
+.feedback-page {
+  margin-top: 60px;
+}

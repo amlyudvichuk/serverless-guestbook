@@ -1,0 +1,91 @@
+@use 'variables' as v;
+
+.video-bg-wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+
+  &_video-bg {
+    position: absolute;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+  }
+
+  &_text-wrapper {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 15vw;
+
+    &_link {
+      text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.313);
+      position: relative;
+      color: transparent;
+      animation: text_reveal 0.5s ease forwards;
+      animation-delay: 1s;
+      cursor: default;
+
+      @media screen and (max-width: 641px) {
+        max-width: unset;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 2s;
+
+        span {
+          animation-delay: 1.5s;
+        }
+      }
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: v.$green;
+        animation: text_reveal_box 1s ease;
+        animation-delay: 0.5s;
+      }
+    }
+  }
+
+  .button-primary {
+    border-color: v.$green;
+    max-width: 300px;
+    min-width: 200px;
+    height: 70px;
+  }
+
+  .button-primary .button-primary_container_text {
+    color: white;
+    font-size: 18px;
+  }
+}
+
+/* Keyframes */
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: #B0CB1F;
+	}
+}
+/* End Keyframes */
